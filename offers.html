@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store - Offers</title>
+    <link rel="stylesheet" href="offers.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="D:\Kamalkaran\RetCo\groceryconnect.png" alt="Grocery Store Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Special Offers</h2>
+        <div class="offers-container">
+            <div class="offer-card">
+                <img src="images/tomato.jpg" alt="Tomatoes">
+                <h3>Tomatoes - 30% Off</h3>
+                <p>Now at Rs.14/kg</p>
+                <button onclick="redirectToPurchase('Tomatoes', 'Rs.14/kg', 'images/tomato.jpg')">Buy Now</button>
+            </div>
+
+            <div class="offer-card">
+                <img src="images/chicken.jpg" alt="Chicken">
+                <h3>Chicken - 20% Off</h3>
+                <p>Now at Rs.160/kg</p>
+                <button onclick="redirectToPurchase('Chicken', 'Rs.160/kg', 'images/chicken.jpg')">Buy Now</button>
+            </div>
+
+            <div class="offer-card">
+                <img src="images/almonds.jpg" alt="Almonds">
+                <h3>Almonds - 25% Off</h3>
+                <p>Now at Rs.112/kg</p>
+                <button onclick="redirectToPurchase('Almonds', 'Rs.112/kg', 'images/almonds.jpg')">Buy Now</button>
+            </div>
+
+            <div class="offer-card">
+                <img src="images/juice.jpg" alt="Juice">
+                <h3>Orange Juice - Buy 1 Get 1 Free</h3>
+                <p>Price: Rs.50/bottle</p>
+                <button onclick="redirectToPurchase('Orange Juice', 'Rs.50/bottle', 'images/juice.jpg')">Buy Now</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function redirectToPurchase(name, price, image) {
+            window.location.href = `purchases.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}`;
+        }
+    </script>
+</body>
+</html>

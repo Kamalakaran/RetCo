@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+    <link rel="stylesheet" href="items.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="D:\Kamalkaran\RetCo\groceryconnect.png" alt="Grocery Store Logo" id="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="items.html?category=vegetables">Vegetables</a></li>
+                <li><a href="items.html?category=non-vegetables">Non-vegetables</a></li>
+                <li><a href="items.html?category=dry-fruits">Dry-fruits</a></li>
+                <li><a href="items.html?category=beverages">Beverages</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2><span id="category-title"></span></h2>
+    <div class="product-list" id="products-container"></div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    document.getElementById('category-title').textContent = category.charAt(0).toUpperCase() + category.slice(1);
+
+        const products = {
+            "vegetables": [
+                { name: "Tomato", price: "Rs.20/kg", img: "images/tomato.jpg" },
+                { name: "Potato", price: "Rs.15/kg", img: "images/potato.jpg" },
+                { name: "Onion", price: "Rs.20/kg", img: "images/onion.jpg" },
+                { name: "Cabbage", price: "Rs.25/kg", img: "images/cabbage.jpg" },
+                { name: "Carrot", price: "Rs.30/kg", img: "images/carrot.jpg" },
+                { name: "Cauliflower", price: "Rs.25/kg", img: "images/cauliflower.jpg" },
+                { name: "Cucumber", price: "Rs.25/kg", img: "images/cucumber.jpg" },
+                { name: "Peas", price: "Rs.20/kg", img: "images/peas.jpg" },
+                { name: "Radishes", price: "Rs.25/kg", img: "images/radishes.jpg" },
+                { name: "Chilli", price: "Rs.20/kg", img: "images/chilli.jpg" }
+            ],
+            "non-vegetables": [
+                { name: "Chicken", price: "Rs.200/kg", img: "images/chicken.jpg" },
+                { name: "Fish", price: "Rs.120/kg", img: "images/fish.jpg" },
+                { name: "Eggs", price: "Rs.120/kg", img: "images/eggs.jpg" },
+                { name: "Mutton", price: "Rs.120/kg", img: "images/mutton.jpg" },
+                { name: "Prawn", price: "Rs.120/kg", img: "images/prawn.jpg" },
+                { name: "Shrimp", price: "Rs.120/kg", img: "images/shrimp.jpg" },
+                { name: "Crab", price: "Rs.120/kg", img: "images/crab.jpg" },
+                { name: "Tuna", price: "Rs.120/kg", img: "images/tuna.jpg" },
+                { name: "Beef", price: "Rs.120/kg", img: "images/beef.jpg" },
+                { name: "Smoked Fish", price: "Rs.120/kg", img: "images/fish.jpg" }
+            ],
+            "dry-fruits": [
+                { name: "Almonds", price: "Rs.150/kg", img: "images/almonds.jpg" },
+                { name: "Walnuts", price: "Rs.230/kg", img: "images/walnuts.jpg" },
+                { name: "Cashews", price: "Rs.130/kg", img: "images/Cashews.jpg" },
+                { name: "Pistachios", price: "Rs.140/kg", img: "images/Pistachios.jpg" },
+                { name: "Dates", price: "Rs.130/kg", img: "images/Dates.jpg" },
+                { name: "Figs", price: "Rs.160/kg", img: "images/Figs.jpg" },
+                { name: "Apricots", price: "Rs.170/kg", img: "images/Apricots.jpg" },
+                { name: "Raisins", price: "Rs.110/kg", img: "images/Raisins.jpg" },
+                { name: "Prunes", price: "Rs.120/kg", img: "images/Prunes.jpg" },
+                { name: "Makhana", price: "Rs.140/kg", img: "images/Makhana.jpg" }
+            ],
+            "beverages": [
+                { name: "Orange Juice", price: "Rs.50/bottle", img: "images/juice.jpg" },
+                { name: "Coffee", price: "Rs.30/pack", img: "images/coffee.jpg" },
+                { name: "Tea", price: "Rs.30/pack", img: "images/tea.jpg" },
+                { name: "Milk", price: "Rs.30/pack", img: "images/milk.jpg" },
+                { name: "Lassi", price: "Rs.30/glass", img: "images/lassi.jpg" },
+                { name: "Lemon Water", price: "Rs.30/glass", img: "images/lemon_water.jpg" },
+                { name: "Limca", price: "Rs.30/bottle", img: "images/limca.jpg" },
+                { name: "Sprite", price: "Rs.30/bottle", img: "images/sprite.jpg" },
+                { name: "Fanta", price: "Rs.30/bottle", img: "images/fanta.jpg" },
+                { name: "Cola", price: "Rs.30/bottle", img: "images/cola.jpg" }
+            ]
+        };
+
+    const container = document.getElementById('products-container');
+    if (products[category]) {
+        products[category].forEach(product => {
+            const item = document.createElement('div');
+            item.className = "product-item";
+            item.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <p>${product.name} - ${product.price}</p>
+                <button onclick="redirectToPurchase('${product.name}', '${product.price}', '${product.img}')">Buy Now</button>
+            `;
+            container.appendChild(item);
+        });
+    } else {
+        container.innerHTML = "<p>No products found</p>";
+    }
+
+    function redirectToPurchase(name, price, img) {
+        window.location.href = `purchases.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
+    }
+</script>
+</body>
+</html>

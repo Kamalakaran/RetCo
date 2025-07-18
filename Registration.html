@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store - Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h1>RetCo</h1>
+            <h2>Create an Account</h2>
+            <form id="register-form">
+                <div class="textbox">
+                    <input type="text" id="username" placeholder="Username" name="username" required>
+                </div>
+                <div class="textbox">
+                    <input type="email" id="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" id="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" id="street_address" placeholder="Street Address" name="street_address" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" id="city" placeholder="City" name="city" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" id="state" placeholder="State" name="state" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" id="zip_code" placeholder="Zip Code" name="zip_code" required>
+                </div>
+                <input type="submit" value="Register" class="btn">
+            </form>
+            <p class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get user details from the form
+            const userDetails = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                street_address: document.getElementById('street_address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip_code: document.getElementById('zip_code').value
+            };
+
+            // Store the user details in localStorage
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+            alert('Registration successful! Please login to continue.');
+            window.location.href = "login.html"; // Redirect to login page
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store - Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Logo -->
+    <header>
+        <div class="logo">
+            <img src="D:\Kamalkaran\RetCo\groceryconnect.png" alt="Grocery Store Logo" id="logo">
+        </div>
+
+        <!-- Search Bar -->
+<div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search for items...">
+    <div id="search-results"></div>
+</div>
+<script src="search.js"></script>
+
+
+        <!-- Navigation (Hamburger Menu) -->
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav id="nav-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li id="login-link"><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Main content here -->
+        <div class="main-content">
+            <h2>Welcome to Your Grocery Store</h2><br>
+            <p>At Grocery connect, we bring you the freshest vegetables, high-quality non-vegetarian products, premium dry fruits, and refreshing beverages—all at unbeatable prices! Whether you’re looking for farm-fresh tomatoes, tender chicken, nutritious almonds, or your favorite juices, we have everything you need under one roof.
+
+Enjoy amazing discounts and exclusive offers every day. Shop conveniently from the comfort of your home and get your groceries delivered straight to your doorstep. Experience hassle-free shopping with secure payments, quick checkout, and reliable delivery.
+
+Explore our Products section to find your daily essentials, check out our latest Offers, and enjoy a seamless shopping experience with RetCo Grocery Store!</p>
+        </div>
+    </main>
+
+    <script>
+        
+        const loggedInUser = sessionStorage.getItem('loggedInUser');
+        
+        if (loggedInUser) {
+            
+            const user = JSON.parse(loggedInUser);
+            const loginLink = document.getElementById('login-link');
+            
+            // Replace the Login link with the user's name
+            loginLink.innerHTML = `Welcome, ${user.username}`;
+            loginLink.href = "#"; // Prevent further navigation if already logged in
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
